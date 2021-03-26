@@ -6,6 +6,15 @@ const getAll = (request, response) => {
     response.status(200).send(filmes);
 }
 
+const getById = (request, response) => {
+    const id = parseInt(request.params.id);
+
+    const filme = filmes.find(filme => filme.id === id);
+
+    return response.status(200).send(filme);
+
+}
+
 const postFilmes = (request, response) => {
     console.log(request.url);
     const { title, description } = request.body;
@@ -23,6 +32,7 @@ const postFilmes = (request, response) => {
 }
 
 const putFilmes = (request, response) => {
+    console.log(request.url);
     const filmeAtualizado = request.body;
     const id = parseInt(request.params.id);
 
@@ -38,6 +48,7 @@ const putFilmes = (request, response) => {
 }
 
 const patchFilmes = (request, response) => {
+    console.log(request.url);
     const filmeAtualizacao = request.body;
     const id = parseInt(request.params.id);
     const filmeParaAtualizar = filmes.find(filmes => filmes.id === id)
@@ -50,6 +61,7 @@ const patchFilmes = (request, response) => {
 }
 
 const deleteFilmes = (request, response) => {
+    console.log(request.url);
     const id = parseInt(request.params.id);
 
     for (var i = 0; i < filmes.length; i++) {
@@ -66,6 +78,7 @@ const deleteFilmes = (request, response) => {
 
 module.exports = {
     getAll,
+    getById,
     postFilmes,
     deleteFilmes,
     putFilmes,

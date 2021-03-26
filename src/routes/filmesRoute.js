@@ -3,6 +3,7 @@ const router = express.Router();
 const controller = require("../controller/filmesController");
 
 router.get("/", controller.getAll);
+router.get("/id/:id", controller.getById);
 router.post("/criar", controller.postFilmes);
 router.put("/atualiza/:id", controller.putFilmes);
 router.patch("/atualizaCampo/:id", controller.patchFilmes);
